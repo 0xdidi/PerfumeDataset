@@ -3,6 +3,8 @@ license: mit
 task_categories:
 - text-classification
 - feature-extraction
+- image-feature-extraction
+- image-classification
 language:
 - en
 tags:
@@ -11,8 +13,8 @@ pretty_name: Perfume dataset
 size_categories:
 - 10K<n<100K
 configs:
-  - config_name: perfume_data_raw
-    data_files: perfumes.csv
+- config_name: perfume_data_raw
+  data_files: perfumes.csv
 ---
 
 
@@ -24,11 +26,30 @@ Perfume dataset, over 26k perfumes
 
 ## How to use
 
-unzip images.zip
+```Python
+from huggingface_hub import hf_hub_download
+
+# download raw archive file
+zip_file = hf_hub_download(
+    repo_id='doevent/perfume',
+    repo_type='dataset',
+    filename='images.zip',
+)
+```
+
+```Python
+import zipfile
+
+# extract files to your directory
+dataset_dir = 'images'
+os.makedirs(dataset_dir, exist_ok=True)
+with zipfile.ZipFile(zip_file, 'r') as zf:
+    zf.extractall(dataset_dir)
+```
 
 ## Dataset Structure
 
-**SQLlite and JSON**
+**RAW data: SQLlite, JSON, CSV**
 
 SQL:
 ```
