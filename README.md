@@ -13,8 +13,10 @@ pretty_name: Perfume dataset
 size_categories:
 - 10K<n<100K
 configs:
-- config_name: name_perfume
-  data_files: perfumes.csv
+  - config_name: default
+    data_files:
+      - split: train
+        path: perfumes.csv
 ---
 
 
