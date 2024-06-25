@@ -72,7 +72,6 @@ JSON:
 
 ```JSON
 [
-[
     {
         "brand": "Fiorucci",
         "name_perfume": "Wallstreet",
