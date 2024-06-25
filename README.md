@@ -13,7 +13,7 @@ pretty_name: Perfume dataset
 size_categories:
 - 10K<n<100K
 configs:
-- config_name: perfume_data_raw
+- config_name: name_perfume
   data_files: perfumes.csv
 ---
 
@@ -22,7 +22,7 @@ configs:
 
 ### Dataset Description
 
-Perfume dataset, over 26k perfumes
+RAW Perfume dataset (2024 Year), over 26k perfumes. Images, ingredients, description, etc.
 
 ## How to use
 
