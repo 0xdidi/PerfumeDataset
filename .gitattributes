@@ -57,3 +57,5 @@ perfumes.json filter=lfs diff=lfs merge=lfs -text
 perfume_database.db filter=lfs diff=lfs merge=lfs -text
 perfumes.csv filter=lfs diff=lfs merge=lfs -text
 perfumes.jsonl filter=lfs diff=lfs merge=lfs -text
+pefume.xls filter=lfs diff=lfs merge=lfs -text
+pefume.xlsx filter=lfs diff=lfs merge=lfs -text
