@@ -12,7 +12,7 @@ size_categories:
 - 10K<n<100K
 configs:
   - config_name: perfume_data_raw
-    data_files: perfumes.json
+    data_files: perfumes.jsonl
 ---
 
 
