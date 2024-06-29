@@ -12,11 +12,6 @@ tags:
 pretty_name: Perfume dataset
 size_categories:
 - 10K<n<100K
-configs:
-  - config_name: default
-    data_files:
-      - split: train
-        path: perfumes.csv
 ---
 
 
