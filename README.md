@@ -10,6 +10,9 @@ language:
 tags:
 - not-for-all-audiences
 pretty_name: Perfume dataset
+data_files:
+  - split: test
+    path: perfumes.csv
 size_categories:
 - 10K<n<100K
 ---
