@@ -1,23 +1,3 @@
----
-license: mit
-task_categories:
-- text-classification
-- feature-extraction
-- image-feature-extraction
-- image-classification
-language:
-- en
-tags:
-- not-for-all-audiences
-pretty_name: Perfume dataset
-data_files:
-  - split: test
-    path: perfumes.csv
-size_categories:
-- 10K<n<100K
----
-
-
 ## Perfume dataset, over 26k perfumes
 
 ### Dataset Description
