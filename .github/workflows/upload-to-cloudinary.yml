@@ -22,14 +22,40 @@ jobs:
         run: |
           pip install cloudinary
           python <<EOF
+
           import os, cloudinary, cloudinary.uploader
+
           cloudinary.config(
             cloud_name = os.environ['CLOUDINARY_CLOUD_NAME'],
             api_key = os.environ['CLOUDINARY_API_KEY'],
             api_secret = os.environ['CLOUDINARY_API_SECRET']
           )
+
+          supported_exts = ('.jpg', '.jpeg', '.png', '.bmp', '.webp', '.gif', '.tiff')
+          skipped = 0
+          errors = 0
+          uploaded = 0
+
           for root, dirs, files in os.walk('Images'):
               for file in files:
+                  if not file.lower().endswith(supported_exts):
+                      skipped += 1
+                      continue
                   path = os.path.join(root, file)
-                  cloudinary.uploader.upload(path, folder='perfumeimg')
+                  # Remove extension for public_id (optional, or use the full name)
+                  public_id = f"perfumeimg/{os.path.splitext(file)[0]}"
+                  try:
+                      cloudinary.uploader.upload(
+                          path,
+                          public_id=public_id,
+                          folder='', # folder is included in public_id here
+                          overwrite=False, # Don't overwrite if public_id exists
+                          unique_filename=False
+                      )
+                      uploaded += 1
+                  except Exception as e:
+                      print(f"Failed to upload {file}: {e}")
+                      errors += 1
+
+          print(f"Uploaded: {uploaded}, Skipped: {skipped}, Errors: {errors}")
           EOF
