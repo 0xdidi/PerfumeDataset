@@ -8,10 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Unzip images
+
+      - name: Install Git LFS and pull files
         run: |
-          unzip images.zip -d Images
+          git lfs install
+          git lfs pull
+
+      - name: Unzip images
+        run: unzip images.zip -d Images
           
       - name: Upload images to Cloudinary
         env:
