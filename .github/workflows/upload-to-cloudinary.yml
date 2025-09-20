@@ -8,11 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
+      
       - name: Unzip images
         run: |
           unzip images.zip -d Images
-
+          
       - name: Upload images to Cloudinary
         env:
           CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
@@ -21,14 +21,14 @@ jobs:
         run: |
           pip install cloudinary
           python <<EOF
-import os, cloudinary, cloudinary.uploader
-cloudinary.config(
-  cloud_name = os.environ['CLOUDINARY_CLOUD_NAME'],
-  api_key = os.environ['CLOUDINARY_API_KEY'],
-  api_secret = os.environ['CLOUDINARY_API_SECRET']
-)
-for root, dirs, files in os.walk('Images'):
-    for file in files:
-        path = os.path.join(root, file)
-        cloudinary.uploader.upload(path, folder='perfumeimg')
-EOF
+          import os, cloudinary, cloudinary.uploader
+          cloudinary.config(
+            cloud_name = os.environ['CLOUDINARY_CLOUD_NAME'],
+            api_key = os.environ['CLOUDINARY_API_KEY'],
+            api_secret = os.environ['CLOUDINARY_API_SECRET']
+          )
+          for root, dirs, files in os.walk('Images'):
+              for file in files:
+                  path = os.path.join(root, file)
+                  cloudinary.uploader.upload(path, folder='perfumeimg')
+          EOF
